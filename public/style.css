@@ -3,8 +3,22 @@ body {
   box-sizing: border-box;
 }
 
+:root {
+  --dark-blue: #0087ca;
+  --grey: #6a8092;
+  --yellow: #ffdd33;
+}
+
 * {
   font-family: 'Open Sans', sans-serif;
+}
+
+.bg-dark {
+  background-color: var(--dark-blue) !important;
+}
+
+.lead > a {
+  color: var(--dark-blue) !important;
 }
 
 .grid-container {
@@ -36,6 +50,18 @@ h1, h2, h3 {
 
 input, select, option {
   color: black !important;
+}
+
+.btn-primary {
+  color: #fff !important;
+  background-color: orangered !important;
+  border: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e93e00 !important;
+  transition: all 0.3s ease;
 }
 
 .image-container {
@@ -75,7 +101,7 @@ input, select, option {
 
 .image > .favourite.on,
 .lead > .favourite.on  {
-  color: #ffdd33;
+  color: var(--yellow);
   font-weight: 800;
   text-shadow: 0 0 2px rgba(99,99,99,0.7);
 }
@@ -103,7 +129,7 @@ input, select, option {
 .image:hover > .details {
   opacity: 1;
   bottom: 0;
-  transition: all 0.2s ease;
+  transition: all 0.2s 0.2s ease;
 } 
 
 .image > .details > a > .info {
@@ -111,7 +137,7 @@ input, select, option {
 }
 
 .lead > .info {
-  color: #007bff;
+  color: var(--dark-blue);
 }
 
 .image > .details > a > .info::after,
@@ -158,6 +184,10 @@ input, select, option {
 
 .color-red {
   color: #e82f3a;
+}
+
+.color-grey {
+  color: var(--grey);
 }
 
 .background-red {
