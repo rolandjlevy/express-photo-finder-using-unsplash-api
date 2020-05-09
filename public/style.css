@@ -1,0 +1,169 @@
+body {
+  margin: 1rem;
+  box-sizing: border-box;
+}
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.grid-container {
+  width: calc(100vw - 4rem);
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.jumbotron {
+  background-color: #e9ecef85 !important;
+}
+
+input, select {
+  color: black;
+}
+
+h1, h2, h3 {
+  letter-spacing: 1px;
+  /* font-family: 'Roboto Slab', serif;
+  font-family: 'Raleway', sans-serif; */
+  font-family: 'Nunito', sans-serif;
+}
+
+*::placeholder {
+  color: rgb(210, 210, 210) !important;
+}
+
+input, select, option {
+  color: black !important;
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap; 
+  margin-top: 20px;
+}
+
+.image {
+  margin: 10px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 3px;
+  background-size: cover;
+  transform: scale(1);
+  transition: all 0.2s ease;
+  box-shadow: 0px 15px 20px -15px rgba(0,0,0,0.75);
+  overflow: hidden;
+}
+
+.image:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+  box-shadow: 0px 20px 25px -15px rgba(0,0,0,0.75);
+} 
+
+.image > .favourite {
+  display: block;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.image > .favourite.on,
+.lead > .favourite.on  {
+  color: #ffdd33;
+  font-weight: 800;
+  text-shadow: 0 0 2px rgba(99,99,99,0.7);
+}
+
+.image > .favourite:hover {
+  /* color: #ffffff;
+  font-weight: 800;
+  text-shadow: 0 0 2px rgba(99,99,99,0.7); */
+}
+
+.image > .details {
+  display: block;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: -10px;
+  padding: 5px;
+  font-size: 0.675rem;
+  font-weight: 600;
+  background: rgb(255, 255, 255, 0.8);
+  transition: all 0.2s ease;
+}
+
+.image:hover > .details {
+  opacity: 1;
+  bottom: 0;
+  transition: all 0.2s ease;
+} 
+
+.image > .details > a > .info {
+  font-size: 0.875rem;
+}
+
+.lead > .info {
+  color: #007bff;
+}
+
+.image > .details > a > .info::after,
+.lead > .info::after {
+  position: absolute;
+  content: '';
+  background: #fff;
+  z-index: -1;
+  margin: 6px;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.lead {
+  font-size: 18px;
+}
+
+.m-t-100 {
+  margin-top: 100px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.m-t-15 {
+  margin-top: 15px;
+}
+
+.p-10 {
+  padding: 10px !important;
+}
+
+.p-20 {
+  padding: 20px !important;
+}
+
+.color-red {
+  color: #e82f3a;
+}
+
+.background-red {
+  background: #e82f3a;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}

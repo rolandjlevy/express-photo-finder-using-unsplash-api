@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+<header>
+  <%- include('../partials/header', { 
+    page: output.page,
+    query: output.query
+  }); %>
+</header>
+
+<main role="main" class="grid-container m-t-100">
+  <h3 class="color-red uppercase"><%= (output.total).toLocaleString() %> results for "<%= output.query %>"</h3>
+  <section class="jumbotron p-20">
+    <p class="lead">page <%= (output.page).toLocaleString() %> of <%= Number(output.total_pages).toLocaleString() %>
+
+  <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>"><i class="fas fa-arrow-circle-left"></i> prev</a> | 
+
+  <a href="/search?page=<%= Number(output.page) + 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>">next <i class="fas fa-arrow-circle-right"></i></a>
+  </p>
+    
+  <%- include('../partials/form') %>
+  <article class="image-container">
+
+  <%
+  const params = `&w=100&h=100&fit=crop&fm=jpg&q=95`;
+  output.results.forEach(item => { %>
+      <section style="background-image:url(<%= item.urls.regular %><%= params %>)" class="image">
+        <i class="fas fa-1x fa-star favourite" id="<%= item.id %>"></i>
+        <div class="details">
+          <a href="<%= item.links.html %>" target="_blank"><i class="fas fa-info-circle info"></i></a>
+          <span>@<%= item.user.username.substr(0, 9) %></span>
+        </div>
+      </section>
+  <%
+  });
+  %>
+  </article>
+</main>
+
+<footer>
+  <script>
+    // const existingResults = window.localStorage.getItem('results') || '[]';
+    const newResults = <%- JSON.stringify(output.results, null, 2) %>;
+    // const combinedResults = [...JSON.parse(existingResults), ...newResults];
+    // console.log({ combinedResults });
+    window.localStorage.setItem('results', JSON.stringify(newResults));
+  </script>
+  <script src="script.js"></script>
+  <script>
+    generateFavourites();
+  </script>
+  <%- include('../partials/footer') %>
+</footer>
+
+</body>
+</html>

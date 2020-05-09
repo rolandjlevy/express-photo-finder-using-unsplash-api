@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+<header>
+  <%- include('../partials/header', { 
+    page: 0,
+    query: 0
+  }); %>
+</header>
+
+<main role="main" class="grid-container m-t-100">
+  <h3 class="color-red uppercase">About</h3>
+  <section class="jumbotron p-20">
+    <p class="lead">This app uses the <a href="https://unsplash.com/documentation">Unsplash API </a> - a modern JSON API that serves data from the largest open collection of high-quality, royalty-free photos.</p>
+  </section>
+</main>
+
+<footer>
+  <script src="script.js"></script>
+  <script src="favourites.js"></script>
+  <%- include('../partials/footer') %>
+</footer>
+
+</body>
+</html>
