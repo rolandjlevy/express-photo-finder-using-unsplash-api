@@ -1,4 +1,9 @@
-# Express & EJS: photo finder using unsplash API
+# Express: photo finder using unsplash API
+
+### Description
+- Express with EJS template 
+- with pagination 
+- saving favourites in localStorage
 
 #### Links
 - Live demo: https://express-photo-finder-using-unsplash-api--rjlevy.repl.co/
