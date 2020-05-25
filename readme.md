@@ -1,4 +1,4 @@
-# Express: photo finder using unsplash API
+# Express: photo finder using Unsplash API
 
 ### Description
 - Express with EJS and Bootstrap
