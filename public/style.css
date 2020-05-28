@@ -27,7 +27,14 @@ body {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  max-width: 670px;
 }
+
+/* @media (max-width: 767px) {
+  .grid-container {
+    max-width: 540px;
+  }
+} */
 
 .jumbotron {
   background-color: #e9ecef85 !important;
