@@ -17,7 +17,7 @@
   <section class="jumbotron p-20">
     <p class="lead">page <%= (output.page).toLocaleString() %> of <%= Number(output.total_pages).toLocaleString() %>
 
-  <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>"><i class="fas fa-arrow-circle-left"></i> prev</a> | 
+  <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>" class="m-l-10"><i class="fas fa-arrow-circle-left"></i> prev</a> | 
 
   <a href="/search?page=<%= Number(output.page) + 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>">next <i class="fas fa-arrow-circle-right"></i></a>
   </p>
@@ -31,8 +31,8 @@
       <section style="background-image:url(<%= item.urls.regular %><%= params %>)" class="image">
         <i class="fas fa-1x fa-star favourite" id="<%= item.id %>"></i>
         <div class="details">
-          <a href="<%= item.links.html %>" target="_blank"><i class="fas fa-info-circle info"></i></a>
-          <span>@<%= item.user.username.substr(0, 9) %></span>
+          <a href="<%= item.links.html %>" target="_blank"><i class="fas fa-info-circle info"></i>
+          <span>@<%= item.user.username.substr(0, 9) %></span></a>
         </div>
       </section>
   <%

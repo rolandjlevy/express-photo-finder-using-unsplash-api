@@ -4,7 +4,8 @@ body {
 }
 
 :root {
-  --dark-blue: #0087ca;
+  --dark-blue: #0287d4;
+  --deep-blue: #006097;
   --grey: #6a8092;
   --yellow: #ffdd33;
 }
@@ -19,6 +20,10 @@ body {
 
 .lead > a {
   color: var(--dark-blue) !important;
+}
+.lead > a:hover {
+  color: var(--deep-blue) !important;
+  text-decoration: none !important;
 }
 
 .grid-container {
@@ -126,11 +131,11 @@ input, select, option {
   width: 100%;
   left: 0;
   bottom: -10px;
-  padding: 5px;
+  padding: 7px;
   font-size: 0.675rem;
   font-weight: 600;
-  background: rgb(255, 255, 255, 0.8);
-  transition: all 0.2s ease;
+  background: rgb(255, 255, 255, 0.9);
+  transition: all 0.2s 0.4s ease;
 }
 
 .image:hover > .details {
@@ -139,15 +144,31 @@ input, select, option {
   transition: all 0.2s 0.2s ease;
 } 
 
-.image > .details > a > .info {
-  font-size: 0.875rem;
+.image > .details > a > .info,
+.image > .details > a > .fa-info-circle:before {
+  font-size: 1rem;
+  position: absolute;
+  top: 4px;
+}
+
+.image > .details > a > span {
+  margin-left: 20px;
+}
+
+.image > .details > a {
+  color: var(--dark-blue)
+}
+
+.image > .details > a:hover {
+  text-decoration: none;
+  color: var(--deep-blue)
 }
 
 .lead > .info {
   color: var(--dark-blue);
 }
 
-.image > .details > a > .info::after,
+/* .image > .details > a > .info::after, */
 .lead > .info::after {
   position: absolute;
   content: '';
@@ -171,6 +192,10 @@ input, select, option {
 
 .m-r-10 {
   margin-right: 10px;
+}
+
+.m-l-10 {
+  margin-left: 10px;
 }
 
 .m-b-10 {
