@@ -1,4 +1,4 @@
-const params = `&w=100&h=100&fit=crop&fm=jpg&q=95`;
+const params = `&w=300&h=300&fit=crop&fm=jpg&q=95`;
 const faves = saved.map(item => {
   return `
     <section style="background-image:url(${item.urls.regular}${params})" class="image">
