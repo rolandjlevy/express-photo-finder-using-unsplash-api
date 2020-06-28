@@ -60,12 +60,12 @@ input, select, option {
   color: #fff !important;
   background-color: orangered !important;
   border: 0;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 .btn-primary:hover {
   background-color: #e93e00 !important;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 /*************/
