@@ -137,3 +137,9 @@ input, select, option {
 .uppercase {
   text-transform: uppercase;
 }
+
+.nav-centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
