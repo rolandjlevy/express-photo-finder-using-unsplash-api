@@ -5,9 +5,9 @@
 - includes pagination and saving favourites in localStorage
 
 #### Links
-- Live demo: https://express-photo-finder-using-unsplash-api--rjlevy.repl.co/
-- Source code: https://repl.it/@rjlevy/Express-photo-finder-using-unsplash-api
-- Github: https://github.com/rolandjlevy/Express-photo-finder-using-unsplash-api
+- [Live demo](https://express-photo-finder-using-unsplash-api--rjlevy.repl.co/) 
+- [Source code](https://repl.it/@rjlevy/Express-photo-finder-using-unsplash-api) 
+- [Github](https://github.com/rolandjlevy/Express-photo-finder-using-unsplash-api)
 
 #### Unsplash API
 - https://unsplash.com/documentation
