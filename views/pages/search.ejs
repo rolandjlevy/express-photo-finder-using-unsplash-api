@@ -14,12 +14,16 @@
 
 <main role="main" class="grid-container m-t-100">
   <h3 class="color-grey uppercase"><%= (output.total).toLocaleString() %> results for "<%= output.query %>"</h3>
+
   <section class="jumbotron p-20">
-    <p class="lead">page <%= (output.page).toLocaleString() %> of <%= Number(output.total_pages).toLocaleString() %>
+    <p class="lead">
 
-  <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>" class="m-l-10"><i class="fas fa-arrow-circle-left"></i> prev</a> | 
+      <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>" class="m-l-10"><i class="fas fa-arrow-circle-left"></i> prev</a> | 
 
-  <a href="/search?page=<%= Number(output.page) + 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>">next <i class="fas fa-arrow-circle-right"></i></a>
+      <a href="/search?page=<%= Number(output.page) + 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>">next <i class="fas fa-arrow-circle-right"></i></a>
+
+      <span class="m-l-10">page <%= (output.page).toLocaleString() %> of <%= Number(output.total_pages).toLocaleString() %></span>
+
   </p>
     
   <%- include('../partials/form') %>
