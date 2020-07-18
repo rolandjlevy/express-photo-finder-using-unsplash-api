@@ -35,7 +35,8 @@
       <section style="background-image:url(<%= item.urls.regular %><%= params %>)" class="image">
         <i class="fas fa-1x fa-star favourite" id="<%= item.id %>"></i>
         <div class="details">
-          <a href="<%= item.links.html %>" target="_blank"><i class="fas fa-info-circle info"></i>
+          <a href="<%= item.links.html %>" target="_blank" class="new-tab-icon">
+          <i class="fas fa-info-circle info"></i>
           <span>@<%= item.user.username.substr(0, 9) %></span></a>
         </div>
       </section>
