@@ -3,6 +3,7 @@
 ### Description
 - Express with EJS and Bootstrap
 - includes pagination and saving favourites in localStorage
+- Full responsive and fluid grid of images
 
 #### Links
 - [Live demo](https://express-photo-finder-using-unsplash-api--rjlevy.repl.co/) 
