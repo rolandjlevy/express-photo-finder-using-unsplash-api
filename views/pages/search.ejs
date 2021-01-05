@@ -46,20 +46,18 @@
   </article>
 </main>
 
-<footer>
-  <script>
-    // const existingResults = window.localStorage.getItem('results') || '[]';
-    const newResults = <%- JSON.stringify(output.results, null, 2) %>;
-    // const combinedResults = [...JSON.parse(existingResults), ...newResults];
-    // console.log({ combinedResults });
-    window.localStorage.setItem('results', JSON.stringify(newResults));
-  </script>
-  <script src="script.js"></script>
-  <script>
-    generateFavourites();
-  </script>
-  <%- include('../partials/footer') %>
-</footer>
+<script>
+  // const existingResults = window.localStorage.getItem('results') || '[]';
+  const newResults = <%- JSON.stringify(output.results, null, 2) %>;
+  // const combinedResults = [...JSON.parse(existingResults), ...newResults];
+  // console.log({ combinedResults });
+  window.localStorage.setItem('results', JSON.stringify(newResults));
+</script>
+<script src="script.js"></script>
+<script>
+  generateFavourites();
+</script>
+<%- include('../partials/footer') %>
 
 </body>
 </html>
