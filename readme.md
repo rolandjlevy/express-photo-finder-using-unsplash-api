@@ -1,9 +1,11 @@
 # Express: photo finder using Unsplash API
 
+This app uses the Unsplash API - a modern JSON API that serves data from the largest open collection of high-quality, royalty-free photos.
+
 ### Description
 - Express with EJS and Bootstrap
-- includes pagination and saving favourites in localStorage
-- Full responsive and fluid grid of images
+- Includes pagination and saving favourites in localStorage
+- Fully responsive and fluid grid of images
 
 #### Links
 - [Live demo](https://express-photo-finder-using-unsplash-api.rjlevy.repl.co/) 
@@ -14,6 +16,3 @@
 - https://unsplash.com/documentation
 - https://docs.imgix.com/apis/url/
 - https://makclass.com/classrooms/37/class_notes/1734/print
-
-#### To do
-- implement Express Routing
