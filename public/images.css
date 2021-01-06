@@ -38,7 +38,7 @@
   font-weight: 600;
   text-shadow: 0 0 4px rgba(33,33,33,0.5);
   opacity: 0.6;
-  transition-duration: 0.5s;
+  transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
   transition-property: transform, color, opacity;
 }
@@ -116,6 +116,7 @@
     padding-bottom: 50%;
   }
 }
+
 @media (max-width: 300px) {
   .image {
     width: 100%;
