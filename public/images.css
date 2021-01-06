@@ -35,14 +35,19 @@
   top: 10px;
   color: #ffffff;
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
+  text-shadow: 0 0 4px rgba(33,33,33,0.5);
+  opacity: 0.6;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  transition-property: transform, color, opacity;
 }
 
 .image > .favourite.on,
 .lead > .favourite.on  {
   color: var(--yellow);
-  font-weight: 800;
-  text-shadow: 0 0 2px rgba(99,99,99,0.7);
+  opacity: 1;
+  transform: rotate(72deg);
 }
 
 .image > .favourite:hover {
