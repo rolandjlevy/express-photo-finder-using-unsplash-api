@@ -68,6 +68,16 @@ input, select, option {
   transition: all 0.15s ease;
 }
 
+.form-inline .input-group {
+    width: 75%;
+}
+
+@media (max-width: 576px) {
+  .form-inline .input-group {
+      width: 100%;
+  }
+}
+
 /*************/
 /* general  **/
 /*************/
