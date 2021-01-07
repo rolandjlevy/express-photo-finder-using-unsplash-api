@@ -93,21 +93,21 @@
   color: var(--deep-blue)
 }
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
   .image {
     width: 25%;
     padding-bottom: 25%;
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .image {
     width: 33.3%;
     padding-bottom: 33.3%;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   .image {
     width: 50%;
     padding-bottom: 50%;
