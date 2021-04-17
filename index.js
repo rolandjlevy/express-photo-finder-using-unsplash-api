@@ -36,10 +36,13 @@ app.post('/search', (req, res) => {
 
 app.get('/search', (req, res) => {
   const { query, page, totalpages } = req.query;
-  let p = Number(page) || 1;
-  if (p > Number(totalpages)) p = Number(totalpages);
+  let p = 0;
+  if (totalpages) {
+    p = Number(page) > 0 ? Number(page) : 1;
+    if (p > Number(totalpages)) p = Number(totalpages);
+  }
   fetchImages(query, p).then(output => {
-    res.render('pages/search', { 
+    res.render('pages/search', {
       output, 
       uri:res.locals.uri
     });
@@ -64,10 +67,10 @@ app.get('/favourites', (req, res) => {
 });
 
 function handleErrors(response) {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response.json();
+  if (!response.ok) {
+    throw Error(response.statusText);
+  }
+  return response.json();
 }
 
 function fetchImages(query, page) {
@@ -96,9 +99,9 @@ app.listen(PORT, () => {
   console.log('Listening on port', PORT);
 });
 
-  /*////////////////*/
-  /* Error handling */
-  /*////////////////*/
+/*////////////////*/
+/* Error handling */
+/*////////////////*/
 
 // page not found (404)
 app.get('/not-found', (req, res) => {
