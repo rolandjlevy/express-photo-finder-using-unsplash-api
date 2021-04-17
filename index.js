@@ -63,18 +63,18 @@ app.get('/favourites', (req, res) => {
   });
 });
 
+function handleErrors(response) {
+    if (!response.ok) {
+      throw Error(response.statusText);
+    }
+    return response.json();
+}
+
 function fetchImages(query, page) {
   const url = `${BASEURL}?page=${page}&query=${query}&per_page=${PERPAGE}&client_id=${ACCESSKEY}`;
-  let error;
   return new Promise((resolve, reject) => {
     fetch(url)
-    .then(result => {
-      if (!result.ok) {
-        const error = new Error(`Unable to load: ${url}`);
-        reject(error);
-      }
-      return result.json();
-    })
+    .then(handleErrors)
     .then(data => {
       const { results, total, total_pages } = data;
       const output = {
@@ -86,6 +86,9 @@ function fetchImages(query, page) {
       };
       resolve(output);
     })
+    .catch(err => {
+      console.log(err);
+    });
   });
 }
 
