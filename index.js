@@ -109,6 +109,7 @@ app.get('*', (req, res, next) => {
   error.statusCode = 302;
   next(error);
 });
+
 // middleware for handing errors
 app.use((error, req, res, next) => {
   // if status code not defined set to generic HTTP status code (500)
