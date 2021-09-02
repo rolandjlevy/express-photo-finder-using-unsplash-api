@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto nav-centering">
       <li class="nav-item">
-        <a class="nav-link<%= uri == '/' || uri == '/search' ? ' active' : '';  %>" href="/">Search</span></a>
+        <a class="nav-link<%= uri == '/' || uri == '/search' ? ' active' : '';  %>" href="/new-search">Search</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link<%= uri.includes('favourites') ? ' active' : '';  %> saved-favourites" href="/favourites?page=<%= page || null %>&query=<%= query || null %>">Favourites</a>

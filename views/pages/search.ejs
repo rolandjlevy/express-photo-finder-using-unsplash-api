@@ -27,8 +27,9 @@
 
     </p>
     <% } %>
-    
-  <%- include('../partials/form') %>
+  
+  <%- include('../partials/form', { query :`${output.query}`}) %>
+  
   <article class="image-container">
 
   <%

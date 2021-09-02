@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const dotenv = require('dotenv');
 const fetch = require('node-fetch');
+const { getRandomWord } = require('./utils.js');
 const PORT = process.env.PORT || 3000;
 const ACCESSKEY = process.env.ACCESSKEY;
 const BASEURL = process.env.BASEURL;
@@ -50,6 +51,21 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/', (req, res) => {
+  const searchquery = getRandomWord();
+  const page = 1;
+  try {
+    fetchImages(searchquery, page).then(output => {
+      res.render('pages/search', { 
+        output, 
+        uri:res.locals.uri 
+      })
+    });
+  } catch(err) {
+    next(err);
+  }
+});
+
+app.get('/new-search', (req, res) => {
   res.render('pages/index', { uri:res.locals.uri });
 });
 
