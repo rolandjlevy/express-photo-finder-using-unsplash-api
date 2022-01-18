@@ -20,45 +20,42 @@ app.use((req, res, next) =>  {
   next();
 })
 
-app.post('/search', (req, res) => {
+app.post('/search', async (req, res) => {
   const { searchquery } = req.body;
   const page = 1;
   try {
-    fetchImages(searchquery, page).then(output => {
+    const output = await fetchImages(searchquery, page);
       res.render('pages/search', { 
         output, 
         uri:res.locals.uri 
       })
-    });
   } catch(err) {
     next(err);
   }
 });
 
-app.get('/search', (req, res) => {
+app.get('/search', async (req, res) => {
   const { query, page, totalpages } = req.query;
   let p = 0;
   if (totalpages) {
     p = Number(page) > 0 ? Number(page) : 1;
     if (p > Number(totalpages)) p = Number(totalpages);
   }
-  fetchImages(query, p).then(output => {
-    res.render('pages/search', {
-      output, 
-      uri:res.locals.uri
-    });
+  const output = await fetchImages(query, p);
+  res.render('pages/search', {
+    output, 
+    uri:res.locals.uri
   });
 });
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
   const searchquery = getRandomWord();
-  const page = 1;
+  const p = 1;
   try {
-    fetchImages(searchquery, page).then(output => {
-      res.render('pages/search', { 
-        output, 
-        uri:res.locals.uri 
-      })
+    const output = await fetchImages(searchquery, p);
+    res.render('pages/search', { 
+      output, 
+      uri:res.locals.uri 
     });
   } catch(err) {
     next(err);
@@ -94,7 +91,7 @@ function fetchImages(query, page) {
   return new Promise((resolve, reject) => {
     fetch(url)
     .then(handleErrors)
-    .then(data => {
+    .then((data) => {
       const { results, total, total_pages } = data;
       const output = {
         query,
