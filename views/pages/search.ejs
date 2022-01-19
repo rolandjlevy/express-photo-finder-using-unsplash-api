@@ -16,16 +16,27 @@
   <h3 class="color-grey uppercase"><%= (output.total).toLocaleString() %> results for "<%= output.query %>"</h3>
 
   <section class="jumbotron p-20">
+
     <% if (output.results.length) { %>
+
     <p class="lead">
 
-      <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>" class="m-l-10"><i class="fas fa-arrow-circle-left"></i> prev</a> | 
+      <% if (output.page > 1) { %>
+        <a href="/search?page=<%= Number(output.page) - 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>" class="m-l-10"><i class="fas fa-arrow-circle-left"></i> prev</a> |
+      <% } else { %>
+        <span class="m-l-10 color-grey"><i class="fas fa-arrow-circle-left"></i> prev</span> |
+      <% } %>
 
-      <a href="/search?page=<%= Number(output.page) + 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>">next <i class="fas fa-arrow-circle-right"></i></a>
+      <% if (output.page < output.total_pages) { %>
+        <a href="/search?page=<%= Number(output.page) + 1 %>&query=<%= output.query %>&totalpages=<%= output.total_pages %>">next <i class="fas fa-arrow-circle-right"></i></a>
+      <% } else { %>
+        <span class="color-grey">next <i class="fas fa-arrow-circle-right"></i></span>
+      <% } %>
 
       <span class="m-l-10">page <%= (output.page).toLocaleString() %> of <%= Number(output.total_pages).toLocaleString() %></span>
 
     </p>
+    
     <% } %>
   
   <%- include('../partials/form', { query : '' }) %>
