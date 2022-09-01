@@ -6,7 +6,7 @@ const { getRandomWord } = require('./utils.js');
 const PORT = process.env.PORT || 3000;
 const ACCESSKEY = process.env.ACCESSKEY;
 const BASEURL = process.env.BASEURL;
-const PERPAGE = 30;
+const PERPAGE = 30; 
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
