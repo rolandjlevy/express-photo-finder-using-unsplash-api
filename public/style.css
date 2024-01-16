@@ -9,7 +9,7 @@ body {
   --grey: #6a8092;
   --yellow: #ffdd33;
 }
-v
+
 * {
   font-family: 'Open Sans', sans-serif;
 }
@@ -18,10 +18,11 @@ v
   background-color: var(--dark-blue) !important;
 }
 
-.lead > a {
+.lead>a {
   color: var(--dark-blue) !important;
 }
-.lead > a:hover {
+
+.lead>a:hover {
   color: var(--deep-blue) !important;
   text-decoration: none !important;
 }
@@ -39,11 +40,14 @@ v
   background-color: #e9ecef85 !important;
 }
 
-input, select {
+input,
+select {
   color: black;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   letter-spacing: 1px;
   font-family: 'Nunito', sans-serif;
 }
@@ -52,7 +56,9 @@ h1, h2, h3 {
   color: rgb(210, 210, 210) !important;
 }
 
-input, select, option {
+input,
+select,
+option {
   color: black !important;
 }
 
@@ -69,12 +75,12 @@ input, select, option {
 }
 
 .form-inline .input-group {
-    width: 75%;
+  width: 75%;
 }
 
 @media (max-width: 576px) {
   .form-inline .input-group {
-      width: 100%;
+    width: 100%;
   }
 }
 
@@ -82,12 +88,12 @@ input, select, option {
 /* general  **/
 /*************/
 
-.lead > .info {
+.lead>.info {
   color: var(--dark-blue);
 }
 
 /* .image > .details > a > .info::after, */
-.lead > .info::after {
+.lead>.info::after {
   position: absolute;
   content: '';
   background: #fff;
@@ -155,8 +161,8 @@ input, select, option {
 }
 
 .new-tab-icon::after {
-  font-family: "Font Awesome 5 Free"; 
-  font-weight: 900; 
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
   content: "\f35d";
   margin-left: 5px;
 }
