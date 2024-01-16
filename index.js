@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const fetch = require('node-fetch');
 require('dotenv').config();
@@ -80,14 +81,14 @@ app.get('/favourites', (req, res) => {
   });
 });
 
-function handleErrors(response) {
+const handleErrors = (response) => {
   if (!response.ok) {
     throw Error(response.statusText);
   }
   return response.json();
 }
 
-function fetchImages(query, page) {
+const fetchImages = (query, page) => {
   const url = `${BASEURL}?page=${page}&query=${query}&per_page=${PERPAGE}&client_id=${ACCESSKEY}`;
   return new Promise((resolve, reject) => {
     fetch(url)
@@ -105,6 +106,7 @@ function fetchImages(query, page) {
     })
     .catch(err => {
       console.log(err);
+      reject(err);
     });
   });
 }
