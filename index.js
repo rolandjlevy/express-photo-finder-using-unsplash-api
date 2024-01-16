@@ -1,12 +1,14 @@
 const express = require('express');
 const app = express();
-const dotenv = require('dotenv');
 const fetch = require('node-fetch');
-const { getRandomWord } = require('./utils.js');
+require('dotenv').config();
+
 const PORT = process.env.PORT || 3000;
 const ACCESSKEY = process.env.ACCESSKEY;
 const BASEURL = process.env.BASEURL;
 const PERPAGE = 30; 
+
+const { getRandomWord } = require('./utils.js'); 
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
