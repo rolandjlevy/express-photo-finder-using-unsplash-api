@@ -133,13 +133,16 @@ app.get('*', (req, res, next) => {
 
 // middleware for handing errors
 app.use((error, req, res, next) => {
-  // if status code not defined set to generic HTTP status code (500)
-  if (!error.statusCode) error.statusCode = 500;
-  // redirect if route is not found
-  if (error.statusCode === 302) {
-    return res.status(302).redirect('/not-found');
-  }
-  // render error page
-  res.status(error.statusCode);
+  // Log the error
+  console.error(error.stack);
+  // // if status code not defined set to generic HTTP status code (500)
+  // if (!error.statusCode) error.statusCode = 500;
+  // // redirect if route is not found
+  // if (error.statusCode === 302) {
+  //   return res.status(302).redirect('/not-found');
+  // }
+  // Set the response status code
+  res.status(500);
+  // res.status(error?.statusCode || 500);
   res.render('pages/error', { error:error.toString() })
 });
