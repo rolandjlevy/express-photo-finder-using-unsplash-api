@@ -7,6 +7,7 @@ body {
   --dark-blue: #0287d4;
   --deep-blue: #006097;
   --grey: #6a8092;
+  --light-grey: #e9ecef85;
   --yellow: #ffdd33;
 }
 
@@ -18,26 +19,23 @@ body {
   background-color: var(--dark-blue) !important;
 }
 
-.lead>a {
+.lead > a {
   color: var(--dark-blue) !important;
 }
 
-.lead>a:hover {
+.lead > a:hover {
   color: var(--deep-blue) !important;
   text-decoration: none !important;
 }
 
 .grid-container {
-  /* width: calc(100vw - 4rem); */
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+  padding: 0 15px;
+  margin: 0 auto;
   max-width: 960px;
 }
 
 .jumbotron {
-  background-color: #e9ecef85 !important;
+  background-color: var(--light-grey) !important;
 }
 
 input,
@@ -88,12 +86,11 @@ option {
 /* general  **/
 /*************/
 
-.lead>.info {
+.lead > .info {
   color: var(--dark-blue);
 }
 
-/* .image > .details > a > .info::after, */
-.lead>.info::after {
+.lead > .info::after {
   position: absolute;
   content: '';
   background: #fff;
@@ -161,8 +158,8 @@ option {
 }
 
 .new-tab-icon::after {
-  font-family: "Font Awesome 5 Free";
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
-  content: "\f35d";
+  content: '\f35d';
   margin-left: 5px;
 }
