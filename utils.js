@@ -1,9 +1,3 @@
-const randomWords = require('random-words');
-
-const randomNum = (n) => Math.round(Math.random() * n) - 1;
-
-const wordsFromPackage = randomWords({ exactly: 25, maxLength: 8 });
-
 const wordsFromLocal = [
   'blue lagoon',
   'calm sea',
@@ -23,13 +17,20 @@ const wordsFromLocal = [
   'welcome'
 ];
 
-const words =
-  wordsFromPackage && wordsFromPackage.length
-    ? wordsFromPackage
-    : wordsFromLocal;
+let words = wordsFromLocal;
+
+(async () => {
+  const randomWords = (await import('random-words')).default;
+  const wordsFromPackage = randomWords({ exactly: 25, maxLength: 8 });
+  if (wordsFromPackage?.length) {
+    words = wordsFromPackage;
+  }
+})();
+
+const getRandomInt = (max) => Math.floor(Math.random() * max);
 
 const getRandomWord = () => {
-  const num = randomNum(words.length);
+  const num = getRandomInt(words.length);
   return words[num];
 };
 
