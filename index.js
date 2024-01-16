@@ -51,7 +51,7 @@ app.get('/search', async (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-  const searchquery = getRandomWord();
+  const searchquery = await getRandomWord();
   const p = 1;
   try {
     const output = await fetchImages(searchquery, p);

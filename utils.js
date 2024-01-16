@@ -17,19 +17,24 @@ const wordsFromLocal = [
   'welcome'
 ];
 
-let words = wordsFromLocal;
-
-(async () => {
-  const randomWords = (await import('random-words')).default;
-  const wordsFromPackage = randomWords({ exactly: 25, maxLength: 8 });
-  if (wordsFromPackage?.length) {
-    words = wordsFromPackage;
+let wordsPromise = (async () => {
+  let words = wordsFromLocal;
+  try {
+    const randomWordsModule = await import('random-words');
+    const wordsFromPackage = randomWordsModule.default({ exactly: 25, maxLength: 8 });
+    if (wordsFromPackage?.length) {
+      words = wordsFromPackage;
+    }
+  } catch (error) {
+    console.error('Error fetching words from package:', error);
   }
+  return words;
 })();
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
-const getRandomWord = () => {
+const getRandomWord = async () => {
+  const words = await wordsPromise; 
   const num = getRandomInt(words.length);
   return words[num];
 };
