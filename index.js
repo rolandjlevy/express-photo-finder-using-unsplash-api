@@ -2,20 +2,19 @@ const express = require('express');
 const app = express();
 const fetch = require('node-fetch');
 require('dotenv').config();
+const { getRandomWord } = require('./utils.js'); 
 
 const PORT = process.env.PORT || 3000;
 const ACCESSKEY = process.env.ACCESSKEY;
 const BASEURL = process.env.BASEURL;
 const PERPAGE = 30; 
 
-const { getRandomWord } = require('./utils.js'); 
-
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'))
+app.set('views', path.join(__dirname, 'views'));
 
 app.use((req, res, next) =>  {
   res.locals.uri = req.originalUrl;
