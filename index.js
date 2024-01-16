@@ -3,12 +3,12 @@ const path = require('path');
 const app = express();
 const fetch = require('node-fetch');
 require('dotenv').config();
-const { getRandomWord } = require('./utils.js'); 
+const { getRandomWord } = require('./utils.js');
 
 const PORT = process.env.PORT || 3000;
 const ACCESSKEY = process.env.ACCESSKEY;
 const BASEURL = process.env.BASEURL;
-const PERPAGE = 30; 
+const PERPAGE = 30;
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -17,21 +17,21 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use((req, res, next) =>  {
+app.use((req, res, next) => {
   res.locals.uri = req.originalUrl;
   next();
-})
+});
 
 app.post('/search', async (req, res) => {
   const { searchquery } = req.body;
   const page = 1;
   try {
     const output = await fetchImages(searchquery, page);
-      res.render('pages/search', { 
-        output, 
-        uri:res.locals.uri 
-      })
-  } catch(err) {
+    res.render('pages/search', {
+      output,
+      uri: res.locals.uri
+    });
+  } catch (err) {
     next(err);
   }
 });
@@ -45,8 +45,8 @@ app.get('/search', async (req, res) => {
   }
   const output = await fetchImages(query, p);
   res.render('pages/search', {
-    output, 
-    uri:res.locals.uri
+    output,
+    uri: res.locals.uri
   });
 });
 
@@ -55,29 +55,29 @@ app.get('/', async (req, res) => {
   const p = 1;
   try {
     const output = await fetchImages(searchquery, p);
-    res.render('pages/search', { 
-      output, 
-      uri:res.locals.uri 
+    res.render('pages/search', {
+      output,
+      uri: res.locals.uri
     });
-  } catch(err) {
+  } catch (err) {
     next(err);
   }
 });
 
 app.get('/new-search', (req, res) => {
-  res.render('pages/index', { uri:res.locals.uri });
+  res.render('pages/index', { uri: res.locals.uri });
 });
 
 app.get('/about', (req, res) => {
-  res.render('pages/about', { uri:res.locals.uri });
+  res.render('pages/about', { uri: res.locals.uri });
 });
 
 app.get('/favourites', (req, res) => {
   const { page, query } = req.query;
-  res.render('pages/favourites', { 
-    page, 
-    query, 
-    uri:res.locals.uri
+  res.render('pages/favourites', {
+    page,
+    query,
+    uri: res.locals.uri
   });
 });
 
@@ -86,33 +86,33 @@ const handleErrors = (response) => {
     throw Error(response.statusText);
   }
   return response.json();
-}
+};
 
 const fetchImages = (query, page) => {
   const url = `${BASEURL}?page=${page}&query=${query}&per_page=${PERPAGE}&client_id=${ACCESSKEY}`;
   return new Promise((resolve, reject) => {
     fetch(url)
-    .then(handleErrors)
-    .then((data) => {
-      const { results, total, total_pages } = data;
-      const output = {
-        query,
-        page,
-        total,
-        total_pages,
-        results
-      };
-      resolve(output);
-    })
-    .catch(err => {
-      console.log(err);
-      reject(err);
-    });
+      .then(handleErrors)
+      .then((data) => {
+        const { results, total, total_pages } = data;
+        const output = {
+          query,
+          page,
+          total,
+          total_pages,
+          results
+        };
+        resolve(output);
+      })
+      .catch((err) => {
+        console.log(err);
+        reject(err);
+      });
   });
-}
+};
 
 app.listen(PORT, () => {
-  console.log('Listening on port', PORT);
+  console.log(`Listening on port ${PORT}`);
 });
 
 /*////////////////*/
@@ -136,14 +136,14 @@ app.get('*', (req, res, next) => {
 app.use((error, req, res, next) => {
   // Log the error
   console.error(error.stack);
-  // // if status code not defined set to generic HTTP status code (500)
-  // if (!error.statusCode) error.statusCode = 500;
-  // // redirect if route is not found
-  // if (error.statusCode === 302) {
-  //   return res.status(302).redirect('/not-found');
-  // }
-  // Set the response status code
-  res.status(500);
-  // res.status(error?.statusCode || 500);
-  res.render('pages/error', { error:error.toString() })
+  // redirect if route is not found
+  if (error.statusCode === 302) {
+    return res.status(302).redirect('/not-found');
+  }
+  // if status code not defined set to generic HTTP status code (500)
+  if (!error?.statusCode) {
+    error.statusCode = 500;
+  }
+  res.status(error.statusCode);
+  res.render('pages/error', { error: error.toString() });
 });

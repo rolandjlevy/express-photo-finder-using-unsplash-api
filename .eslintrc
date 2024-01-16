@@ -1,0 +1,40 @@
+{
+  "extends": "eslint:recommended",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+    "commonjs": true,
+    "es2021": true
+  },
+  "rules": {
+    "indent": ["error", 2], // Enforce a consistent indentation of 2 spaces
+    "linebreak-style": ["error", "unix"], // Enforce consistent linebreak style (unix or windows)
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }], // Enforce single quotes with allowance for template literals
+    "semi": ["error", "always"], // Require semicolons at the end of statements
+    "no-unused-vars": [
+      "warn",
+      {
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "ignoreRestSiblings": true
+      }
+    ], // Warn about variables that are declared but not used
+    "no-console": "off", // Either turn off or warn/error for console statements
+    "no-debugger": "error", // Disallow debugger statements
+    "no-trailing-spaces": "error", // Disallow trailing whitespace at the end of lines
+    "eol-last": ["error", "always"], // Enforce at least one newline at the end of files
+    "comma-dangle": ["error", "never"], // Disallow trailing commas in object and array literals
+    "prefer-const": "error", // Suggest using const for variables that are never reassigned after declared
+    "eqeqeq": ["error", "always"], // Require the use of === and !== instead of == and !=
+    "curly": "error", // Require curly braces for all control statements
+    "brace-style": "error", // Enforce one true brace style
+    "array-callback-return": "warn", // Enforce return statements in array method callbacks
+    "default-case": "warn", // Require default cases in switch statements
+    "consistent-return": "error" // Require return statements to either always or never specify values
+  }
+}
