@@ -1,9 +1,11 @@
 const wordsFromLocal = [
   'blue lagoon',
   'calm sea',
+  'cake',
   'chocolate',
   'clear blue sky',
   'clouds',
+  'friend',
   'garden',
   'green forest',
   'hello world',
@@ -17,27 +19,28 @@ const wordsFromLocal = [
   'welcome'
 ];
 
-let wordsPromise = (async () => {
-  let words = wordsFromLocal;
+async function getWordsFromPackage() {
   try {
-    const randomWordsModule = await import('random-words');
-    const wordsFromPackage = randomWordsModule.default({ exactly: 25, maxLength: 8 });
-    if (wordsFromPackage?.length) {
-      words = wordsFromPackage;
-    }
+    const { default: randomWords } = await import('random-words');
+    return randomWords({ exactly: 25, maxLength: 8 });
   } catch (error) {
     console.error('Error fetching words from package:', error);
+    return null;
   }
-  return words;
-})();
+}
+
+async function wordsPromise() {
+  const wordsFromPackage = await getWordsFromPackage();
+  return wordsFromPackage?.length ? wordsFromPackage : wordsFromLocal;
+}
 
 const getRandomInt = (max) => Math.floor(Math.random() * max);
 
-const getRandomWord = async () => {
-  const words = await wordsPromise; 
+async function getRandomWord() {
+  const words = wordsFromLocal; // await wordsPromise();
   const num = getRandomInt(words.length);
   return words[num];
-};
+}
 
 module.exports = {
   getRandomWord
