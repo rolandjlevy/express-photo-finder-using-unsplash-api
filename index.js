@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.post('/search', async (req, res) => {
+app.post('/search', async (req, res, next) => {
   const { searchquery } = req.body;
   const page = 1;
   try {
@@ -41,7 +41,9 @@ app.get('/search', async (req, res) => {
   let p = 0;
   if (totalpages) {
     p = Number(page) > 0 ? Number(page) : 1;
-    if (p > Number(totalpages)) p = Number(totalpages);
+    if (p > Number(totalpages)) {
+      p = Number(totalpages);
+    }
   }
   const output = await fetchImages(query, p);
   res.render('pages/search', {
@@ -50,7 +52,7 @@ app.get('/search', async (req, res) => {
   });
 });
 
-app.get('/', async (req, res) => {
+app.get('/', async (req, res, next) => {
   const searchquery = await getRandomWord();
   const p = 1;
   try {
@@ -133,12 +135,12 @@ app.get('*', (req, res, next) => {
 });
 
 // middleware for handing errors
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   // Log the error
   console.error(error.stack);
   // redirect if route is not found
   if (error.statusCode === 302) {
-    return res.status(302).redirect('/not-found');
+    res.status(302).redirect('/not-found');
   }
   // if status code not defined set to generic HTTP status code (500)
   if (!error?.statusCode) {

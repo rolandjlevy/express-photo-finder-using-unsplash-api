@@ -2,19 +2,26 @@
 // For config options, see README: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 // https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers
 {
-	"name": "Node.js & Express",
-	"image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:16-bullseye",
-	"forwardPorts": [
-		3000
-	],
-	"postCreateCommand": "npm install",
-	"remoteUser": "node",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"esbenp.prettier-vscode",
-				"dbaeumer.vscode-eslint"
-			]
-		}
-	}
+  "name": "Node.js & Express",
+  "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:16-bullseye",
+  "forwardPorts": [3000],
+  "postCreateCommand": "npm install",
+  "remoteUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"],
+      "settings": {
+        "editor.tabSize": 2,
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "workbench.colorTheme": "Default Dark+",
+        "files.autoSave": "onFocusChange",
+        "editor.formatOnSave": true,
+        "files.watcherExclude": {
+          "**/.git/objects/**": true,
+          "**/.git/subtree-cache/**": true,
+          "**/node_modules/**": true
+        }
+      }
+    }
+  }
 }
