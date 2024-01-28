@@ -4,10 +4,10 @@ This photo finder uses the [Unsplash API](https://unsplash.com/documentation) - 
 
 ### Links 🔗
 - [See the live demo](https://express-photo-finder-using-unsplash-api.vercel.app/) 
-- [Explore the Github repo](https://express-photo-finder-using-unsplash-api.rolandjlevy.repl.co/)
+- [Explore the Github repo](https://github.com/rolandjlevy/express-photo-finder-using-unsplash-api)
 
 ### Features 💡
-- Built with Node, Express, EJS, JavaScript and Bootstrap - without the use of frameworks or libraries
+- Built with Node, Express, EJS, JavaScript and Bootstrap
 - Favourites are saved to localStorage
 - Fully responsive and mobile friendly
 
