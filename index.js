@@ -91,7 +91,12 @@ const handleErrors = (response) => {
 };
 
 const fetchImages = (query, page) => {
+  if (!BASEURL || !ACCESSKEY) {
+    console.log('Error: environment variables are missing');
+    return;
+  }
   const url = `${BASEURL}?page=${page}&query=${query}&per_page=${PERPAGE}&client_id=${ACCESSKEY}`;
+  // eslint-disable-next-line consistent-return
   return new Promise((resolve, reject) => {
     fetch(url)
       .then(handleErrors)
