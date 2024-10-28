@@ -33,16 +33,3 @@ function generateFavourites(target = 'results') {
     });
   });
 }
-
-// collapse navbar when user clicks outside navbar area
-document.body.addEventListener('click', function (event) {
-  const navbar = document.querySelector('.navbar-collapse');
-  const navbarToggler = document.querySelector('.navbar-toggler');
-  if (
-    navbar.classList.contains('show') &&
-    !navbar.contains(event.target) &&
-    event.target !== navbarToggler
-  ) {
-    navbar.classList.remove('show');
-  }
-});
