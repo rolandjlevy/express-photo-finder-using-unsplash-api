@@ -1,29 +1,39 @@
-
 /************/
 /* images  **/
 /************/
 
-.image-container {
-  display: flex;
-  flex-wrap: wrap; 
-  margin-top: 20px;
+:root {
+  --gap-size: 10px;
 }
 
-.image {    
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: var(--gap-size);
+}
+
+.image {
   border: 0;
   margin: 0;
   position: relative;
-  width: 20%;
-  padding-bottom: 20%;
+  width: calc(20% - var(--gap-size));
+  aspect-ratio: 1 / 1;
+  padding-bottom: calc(20% - var(--gap-size));
   background-size: 175%;
   background-position: center;
   overflow: hidden;
   transition: all 0.2s ease;
+  box-shadow: 0px 0px 5px 0px #00000033;
+}
+
+.image:nth-child(5n) {
+  width: 20%;
 }
 
 .image:hover {
   background-size: 200%;
-} 
+}
 
 .image > .favourite {
   display: block;
@@ -33,7 +43,7 @@
   color: #ffffff;
   cursor: pointer;
   font-weight: 600;
-  text-shadow: 0 0 4px rgba(33,33,33,0.5);
+  text-shadow: 0 0 4px rgba(33, 33, 33, 0.5);
   opacity: 0.6;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
@@ -41,7 +51,7 @@
 }
 
 .image > .favourite.on,
-.lead > .favourite.on  {
+.lead > .favourite.on {
   color: var(--yellow);
   opacity: 1;
 }
@@ -71,7 +81,7 @@
   opacity: 1;
   bottom: 0;
   transition: all 0.2s 0.2s ease;
-} 
+}
 
 .image > .details > a > .info,
 .image > .details > a > .fa-info-circle:before {
@@ -85,37 +95,56 @@
 }
 
 .image > .details > a {
-  color: var(--dark-blue)
+  color: var(--dark-blue);
 }
 
 .image > .details > a:hover {
   text-decoration: none;
-  color: var(--deep-blue)
+  color: var(--deep-blue);
 }
 
 @media (max-width: 750px) {
-  .image {
+  .image,
+  .image:nth-child(5n) {
+    width: calc(25% - var(--gap-size));
+    padding-bottom: calc(25% - var(--gap-size));
+  }
+  .image:nth-child(4n) {
     width: 25%;
-    padding-bottom: 25%;
   }
 }
 
 @media (max-width: 600px) {
-  .image {
+  .image,
+  .image:nth-child(4n),
+  .image:nth-child(5n) {
+    width: calc(33.3% - var(--gap-size));
+    padding-bottom: calc(33.3% - var(--gap-size));
+  }
+  .image:nth-child(3n) {
     width: 33.3%;
-    padding-bottom: 33.3%;
   }
 }
 
 @media (max-width: 450px) {
-  .image {
+  .image,
+  .image:nth-child(3n),
+  .image:nth-child(4n),
+  .image:nth-child(5n) {
+    width: calc(50% - var(--gap-size));
+    padding-bottom: calc(50% - var(--gap-size));
+  }
+  .image:nth-child(2n) {
     width: 50%;
-    padding-bottom: 50%;
   }
 }
 
-@media (max-width: 300px) {
-  .image {
+@media (max-width: 350px) {
+  .image,
+  .image:nth-child(2n),
+  .image:nth-child(3n),
+  .image:nth-child(4n),
+  .image:nth-child(5n) {
     width: 100%;
     padding-bottom: 100%;
   }
