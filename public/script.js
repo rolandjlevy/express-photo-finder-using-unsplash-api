@@ -7,6 +7,7 @@ savedFavourites.innerHTML = `Favourites (${saved.length})`;
 let favourites;
 const imageContainer = document.querySelector('.image-container');
 
+// eslint-disable-next-line no-unused-vars
 function generateFavourites(target = 'results') {
   const arr = target === 'results' ? results : saved;
   // console.log({arr});
